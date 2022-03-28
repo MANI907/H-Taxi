@@ -58,7 +58,7 @@ H Taxi
   ![image](https://github.com/MANI907/H-Taxi/blob/main/Images/%EB%B6%84%EC%84%9D%EC%84%A4%EA%B3%84_AS-IS.png?raw=true)
 
 ## TO-BE 조직 (Vertically-Aligned)
-  ![조직구조](https://github.com/MANI907/H-Taxi/blob/main/Images/%EB%B6%84%EC%84%9D%EC%84%A4%EA%B3%84_TO_BE.jpg?raw=true)
+  
 
 
 ## Event Storming 결과
