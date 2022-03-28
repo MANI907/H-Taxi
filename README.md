@@ -34,3 +34,27 @@ H Taxi
 - 비기능적 요구사항
     + 트랜잭션
     + 장애격리
+
+
+# 체크포인트
+
+1. Saga
+1. CQRS
+1. Correlation
+1. Req/Resp
+1. Gateway
+1. Deploy/ Pipeline
+1. Circuit Breaker
+1. Autoscale (HPA)
+1. Zero-downtime deploy (Readiness Probe)
+1. Config Map/ Persistence Volume
+1. Polyglot
+1. Self-healing (Liveness Probe)
+
+
+# 분석/설계
+
+
+## Event Storming 결과
+* MSAEz 로 모델링한 이벤트스토밍 결과:  https://labs.msaez.io/#/storming/kNx981SCgIRu8zSkCyuoC6n2vzN2/dadf2150564b567c84b8f55dcf9500fa
+
