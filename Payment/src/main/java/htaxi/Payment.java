@@ -13,6 +13,12 @@ public class Payment  {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    private Integer paymentStatus;
+
+    private String phoneNumber;
+
+    private Long estimatedFee;
+
 
     @PostPersist
     public void onPostPersist(){
@@ -28,6 +34,30 @@ public class Payment  {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public Integer getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Integer paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    public Long getEstimatedFee() {
+        return estimatedFee;
+    }
+
+    public void setEstimatedFee(Long estimatedFee) {
+        this.estimatedFee = estimatedFee;
     }
     
 
