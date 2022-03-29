@@ -28,20 +28,24 @@
 
 - 커맨드/쿼리
 
-|Event Store| ->Eventually | Read model DB|
-|------------|--------|-------------|
-|Data Access(Repositories)| |Read|
-|Domain Model(Grab,Payment,Allocation)| |Model|
-|Interface(UI/API) | |  |
-
 
 <table>
   <tr>
     <td>Event Store</td>
     <td>->Eventually</td>
-    <td>->Read model DB</td>
+    <td>Read model DB</td>
   </tr>
   <tr>
-    <td colspan="2">내용</td>
+   <tr>
+    <td>Data Access(Repositories)</td>
+    <td></td>
+    <td>Read Model</td>
+  </tr>
+  <tr>
+    <td>Domain Model(Grab,Payment,Allocation)</td>
+    <td></td>
+    <td>Model</td>
+  </tr>
+    <td colspan="3">Interface(UI/API)</td>
   </tr>
 </table>
