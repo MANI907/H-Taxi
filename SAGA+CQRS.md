@@ -70,6 +70,7 @@ public interface PaymentService {
 
 
 - 배차요청을 받은 직후(@PostPersist) 결제를 요청하도록 처리
+
 ```
 @PostPersist
 public void onPostPersist(){
