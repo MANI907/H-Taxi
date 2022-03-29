@@ -19,13 +19,10 @@ python policy-handler.py
 ## DDD 의 적용
 3개의 도메인으로 관리되고 있으며 배차요청(Grab), 결제(Payment), 배차할당(Allocation)으로 구성된다.
 
+![DDD](https://github.com/MANI907/H-Taxi/blob/main/Images/%EC%9D%B4%EB%AF%B8%EC%A7%80%205.png?raw=true)
 
 
-
-```
-- 적용 후 REST API 의 테스트
-```
-
+![DDD_2](https://github.com/MANI907/H-Taxi/blob/main/Images/%EC%9D%B4%EB%AF%B8%EC%A7%80%206.png?raw=true)
 
 
 
