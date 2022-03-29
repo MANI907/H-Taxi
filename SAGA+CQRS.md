@@ -28,6 +28,8 @@ python policy-handler.py
 
 ## 폴리글랏 퍼시스턴스
 
+Grab/pom.xml
+
 ```
 <dependency>
 	<groupId>com.h2database</groupId>
@@ -46,4 +48,6 @@ python policy-handler.py
 ## 폴리글랏 프로그래밍 - JAVA
 
 
+## 서비스 호출 흐름
+- grab 서비스 호출 -> payment 호출 처리 -> 배차 할당에서 택시기사 배차 할당하여 배차 완료 상태가 된다.
 
