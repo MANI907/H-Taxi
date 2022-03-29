@@ -24,3 +24,13 @@
 |startingPoint|출발지|String|
 |destination|목적지|String|
 |estimatedFee|예상금액|Integer|
+
+
+- 커맨드/쿼리
+배차요청(Grab), 결제(Payment), 배차할당(Allocation)
+
+|Event Store| ->Eventually | Read model DB|
+|------------|--------|-------------|
+|Data Access(Repositories)| |Read|
+|Domain Model(Grab,Payment,Allocation)| |Model|
+|Interface(UI/API)|
