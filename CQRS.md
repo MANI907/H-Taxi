@@ -27,10 +27,21 @@
 
 
 - 커맨드/쿼리
-배차요청(Grab), 결제(Payment), 배차할당(Allocation)
 
 |Event Store| ->Eventually | Read model DB|
 |------------|--------|-------------|
 |Data Access(Repositories)| |Read|
 |Domain Model(Grab,Payment,Allocation)| |Model|
-|Interface(UI/API)|
+|Interface(UI/API) | |  |
+
+
+<table>
+  <tr>
+    <td>Event Store</td>
+    <td>->Eventually</td>
+    <td>->Read model DB</td>
+  </tr>
+  <tr>
+    <td colspan="2">내용</td>
+  </tr>
+</table>
