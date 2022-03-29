@@ -70,26 +70,25 @@ public interface PaymentService {
 
 
 - 배차요청을 받은 직후(@PostPersist) 결제를 요청하도록 처리
-
 ```
 @PostPersist
 public void onPostPersist(){
 
-//배차요청
-GrabRequestConfirmed grabRequestConfirmed = new GrabRequestConfirmed();
+	//배차요청
+	GrabRequestConfirmed grabRequestConfirmed = new GrabRequestConfirmed();
 
-BeanUtils.copyProperties(this, grabRequestConfirmed);
-grabRequestConfirmed.publishAfterCommit();
+	BeanUtils.copyProperties(this, grabRequestConfirmed);
+	grabRequestConfirmed.publishAfterCommit();
 
-htaxi.external.Payment payment = new htaxi.external.Payment();
-payment.setId(getid());
+	htaxi.external.Payment payment = new htaxi.external.Payment();
+	payment.setId(getid());
 
-GrabApplication.applicationContext.getBean(htaxi.external.PaymentService.class)
-    .pay(payment);
+	GrabApplication.applicationContext.getBean(htaxi.external.PaymentService.class)
+	    .pay(payment);
 
-GrabCancelled grabCancelled = new GrabCancelled();
-BeanUtils.copyProperties(this, grabCancelled);
-grabCancelled.publishAfterCommit();
+	GrabCancelled grabCancelled = new GrabCancelled();
+	BeanUtils.copyProperties(this, grabCancelled);
+	grabCancelled.publishAfterCommit();
 
 }
 
@@ -98,8 +97,5 @@ grabCancelled.publishAfterCommit();
 - 고객이 결제한다.
 - 결제가 완료되면 요청내용(승차장소, 목적지)이 택시기사에게 전달된다.
 - 택시기사는 수신된 배차정보를 승인하고 승차장소로 이동한다.
-고객이 배차요청을 취소할 수 있다.
-배차요청이 취소(결제취소)가 되면 배차도 취소된다.
-택시기사는 배차요청/승인 상태를 중간중간 조회한다.
-배차상태가 바뀌면 카톡을 알림을 보낸다
+
 
