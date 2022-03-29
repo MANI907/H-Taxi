@@ -60,19 +60,6 @@ public class Grab  {
 
     }
     
-    
-    
-package htaxi;
-
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
-@RepositoryRestResource(collectionResourceRel="grabs", path="grabs")
-public interface GrabRepository extends PagingAndSortingRepository<Grab, Long>{
-
-
-}
-
 
 ```
 
@@ -104,7 +91,7 @@ Grab/pom.xml
 - 고객이 목적지를 설정하고 택시배차를 요청한다.
 
 - 결제서비스를 호출하기 위하여 Stub과 (FeignClient) 를 이용하여 Service 대행 인터페이스 (Proxy) 를 구현
-- 
+
 ```
 # (Grab) PaymentService.java
 
