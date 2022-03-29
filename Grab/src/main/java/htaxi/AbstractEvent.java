@@ -1,6 +1,6 @@
-package htaxi;
+package shopmall;
 
-import htaxi.config.kafka.KafkaProcessor;
+import shopmall.config.kafka.KafkaProcessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.messaging.MessageChannel;
@@ -16,13 +16,12 @@ import java.util.Date;
 public class AbstractEvent {
 
     String eventType;
-    Long timestamp;
+    String timestamp;
 
     public AbstractEvent(){
         this.setEventType(this.getClass().getSimpleName());
-        // SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
-        // this.timestamp = defaultSimpleDateFormat.format(new Date());
-        this.timestamp = System.currentTimeMillis();
+        SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
+        this.timestamp = defaultSimpleDateFormat.format(new Date());
     }
 
     public String toJson(){
@@ -44,7 +43,7 @@ public class AbstractEvent {
             /**
              * spring streams 방식
              */
-            KafkaProcessor processor = GrabApplication.applicationContext.getBean(KafkaProcessor.class);
+            KafkaProcessor processor = OrderApplication.applicationContext.getBean(KafkaProcessor.class);
             MessageChannel outputChannel = processor.outboundTopic();
 
             outputChannel.send(MessageBuilder
@@ -78,15 +77,15 @@ public class AbstractEvent {
         this.eventType = eventType;
     }
 
-    public Long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
-    public boolean validate(){
+    public boolean isMe(){
         return getEventType().equals(getClass().getSimpleName());
     }
 }

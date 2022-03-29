@@ -1,6 +1,6 @@
-package htaxi;
+package shopmall;
 
-import htaxi.config.kafka.KafkaProcessor;
+import shopmall.config.kafka.KafkaProcessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyHandler{
-    @Autowired GrabRepository grabRepository;
-
+	@Autowired GrabRepository grabRepository;
+	
     @StreamListener(KafkaProcessor.INPUT)
-    public void whatever(@Payload String eventString){}
+    public void onStringEventListener(@Payload String eventString){
 
+    }
     @StreamListener(KafkaProcessor.INPUT)
     public void wheneverStartService_ChangeGrabStatus(@Payload StartService startService){
 
@@ -33,5 +34,3 @@ public class PolicyHandler{
 
 
 }
-
-

@@ -1,18 +1,16 @@
-package htaxi;
+package shopmall;
 
 import javax.persistence.*;
 import org.springframework.beans.BeanUtils;
 import java.util.List;
 
-
 @Entity
 @Table(name="AllocationManagement_table")
-public class AllocationManagement  {
+public class AllocationManagement {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-
     private Integer allocationStatus;
 
     private String phoneNumber;
@@ -79,7 +77,7 @@ public class AllocationManagement  {
     public void setEstimatedFee(String estimatedFee) {
         this.estimatedFee = estimatedFee;
     }
-    
+
 
 
 

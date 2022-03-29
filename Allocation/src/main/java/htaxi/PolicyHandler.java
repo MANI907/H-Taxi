@@ -1,6 +1,6 @@
-package htaxi;
+package shopmall;
 
-import htaxi.config.kafka.KafkaProcessor;
+import shopmall.config.kafka.KafkaProcessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,30 +8,34 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PolicyHandler{
-    @Autowired AllocationManagementRepository allocationManagementRepository;
+    @Autowired
+    DeliveryRepository deliveryRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whatever(@Payload String eventString){}
+    public void wheneverOrderPlaced_StartDelivery(@Payload OrderPlaced orderPlaced){
 
-    @StreamListener(KafkaProcessor.INPUT)
-    public void wheneverPaymentApproved_ConfirmAllocation(@Payload PaymentApproved paymentApproved){
-
-        if(!paymentApproved.validate()) return;
-
-        System.out.println("\n\n##### listener ConfirmAllocation : " + paymentApproved.toJson() + "\n\n");
-
-
-        
-
-        // Sample Logic //
-        // AllocationManagement allocationManagement = new AllocationManagement();
-        // allocationManagementRepository.save(allocationManagement);
-
+        if(orderPlaced.isMe()){
+            System.out.println("##### listener StartDelivery : " + orderPlaced.toJson());
+            Delivery delivery = new Delivery();
+            delivery.setOrderId(orderPlaced.getId());
+            delivery.setProductId(orderPlaced.getProductId());
+            delivery.setProductName(orderPlaced.getProductName());
+            deliveryRepository.save(delivery);
+        }
     }
 
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverOrderCancelled_DeleteDelivery(@Payload OrderCancelled orderCancelled){
+        if(orderCancelled.isMe()){
+            List<Delivery> deliveryList = deliveryRepository.findByOrderId(orderCancelled.getId());
+            if ((deliveryList != null) && !deliveryList.isEmpty()){
+                deliveryRepository.deleteAll(deliveryList);
+            }
+        }
+    }
 
 }
-
-

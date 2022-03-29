@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 
 ---
 
@@ -8,22 +8,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: Grab
+        - id: order
           uri: http://localhost:8081
           predicates:
-            - Path=/grabs/** 
-        - id: Payment
-          uri: http://localhost:8082
-          predicates:
-            - Path=/payments/** 
-        - id: Allocation
-          uri: http://localhost:8083
-          predicates:
-            - Path=/allocationManagements/** /requestAllocationStatuses/**
-        - id: frontend
-          uri: http://localhost:8080
-          predicates:
-            - Path=/**
+            - Path=/orders/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -43,22 +31,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: Grab
-          uri: http://Grab:8080
+        - id: order
+          uri: http://order:8080
           predicates:
-            - Path=/grabs/** 
-        - id: Payment
-          uri: http://Payment:8080
+            - Path=/orders/** 
+        - id: delivery
+          uri: http://delivery:8080
           predicates:
-            - Path=/payments/** 
-        - id: Allocation
-          uri: http://Allocation:8080
-          predicates:
-            - Path=/allocationManagements/** /requestAllocationStatuses/**
-        - id: frontend
-          uri: http://frontend:8080
-          predicates:
-            - Path=/**
+            - Path=/deliveries/** 
       globalcors:
         corsConfigurations:
           '[/**]':

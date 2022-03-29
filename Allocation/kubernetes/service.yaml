@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: Allocation
+  name: delivery
   labels:
-    app: Allocation
+    app: delivery
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: Allocation
+    app: delivery

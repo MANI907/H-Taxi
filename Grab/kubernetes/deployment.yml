@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Grab
+  name: order
   labels:
-    app: Grab
+    app: order
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Grab
+      app: order
   template:
     metadata:
       labels:
-        app: Grab
+        app: order
     spec:
       containers:
-        - name: Grab
-          image: username/Grab:latest
+        - name: order
+          image: username/order:latest
           ports:
             - containerPort: 8080
           readinessProbe:

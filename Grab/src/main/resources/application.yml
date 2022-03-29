@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 ---
 
 spring:
@@ -25,11 +24,11 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: Grab
-          destination: htaxi
+          group: order
+          destination: shopmall
           contentType: application/json
         event-out:
-          destination: htaxi
+          destination: shopmall
           contentType: application/json
 
 logging:
@@ -46,7 +45,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: my-kafka:9092
+          brokers: my-kafka.kafka.svc.cluster.local:9092
         streams:
           binder:
             configuration:
@@ -57,9 +56,9 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: Grab
-          destination: htaxi
+          group: order
+          destination: shopmall
           contentType: application/json
         event-out:
-          destination: htaxi
+          destination: shopmall
           contentType: application/json
