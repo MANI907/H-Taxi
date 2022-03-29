@@ -59,10 +59,22 @@ public class Grab  {
         grabCancelled.publishAfterCommit();
 
     }
+    
+    
+    
+package htaxi;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource(collectionResourceRel="grabs", path="grabs")
+public interface GrabRepository extends PagingAndSortingRepository<Grab, Long>{
+
+
+}
+
+
 ```
-
-
-![DDD_2](https://github.com/MANI907/H-Taxi/blob/main/Images/%EC%9D%B4%EB%AF%B8%EC%A7%80%206.png?raw=true)
 
 
 
