@@ -14,20 +14,8 @@
   -   도메인 이벤트를 저장하고 전 시스템의 전이상태를 보존하여 데이터베이스 시스템의 실패시에 데이터를 복구 할 수 있다.
   -   이벤트 스토어를 리플레이시켜서 어떤 데이터이든 상태를 재생성할 수 있다.
 
-- 테이블 모델링(Grab)
-
-|Column|Description|Type|
-|------|---|---|
-|id|배차ID|long|
-|grabStatus|배차상태|Integer|
-|phoneNumber|고객전화번호|String|
-|startingPoint|출발지|String|
-|destination|목적지|String|
-|estimatedFee|예상금액|Integer|
-
 
 - 커맨드/쿼리
-
 
 <table>
   <tr>
@@ -39,13 +27,24 @@
    <tr>
     <td>Data Access(Repositories)</td>
     <td></td>
-    <td>Read Model</td>
+    <td rowspan="2">Read Model</td>
   </tr>
   <tr>
     <td>Domain Model(Grab,Payment,Allocation)</td>
     <td></td>
-    <td>Model</td>
   </tr>
-    <td colspan="3">Interface(UI/API)</td>
+    <td colspan="3" align="center">Interface(UI/API)</td>
   </tr>
 </table>
+
+- 테이블 모델링(Grab)
+
+|Column|Description|Type|
+|------|---|---|
+|id|배차ID|long|
+|grabStatus|배차상태|Integer|
+|phoneNumber|고객전화번호|String|
+|startingPoint|출발지|String|
+|destination|목적지|String|
+|estimatedFee|예상금액|Integer|
+
