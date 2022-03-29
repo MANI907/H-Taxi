@@ -19,7 +19,47 @@ python policy-handler.py
 ## DDD 의 적용
 3개의 도메인으로 관리되고 있으며 배차요청(Grab), 결제(Payment), 배차할당(Allocation)으로 구성된다.
 
-![DDD](https://github.com/MANI907/H-Taxi/blob/main/Images/%EC%9D%B4%EB%AF%B8%EC%A7%80%205.png?raw=true)
+```
+@Document
+@Table(name="Grab_table")
+public class Grab  {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+
+    private Integer grabStatus;
+
+    private String phoneNumber;
+
+    private String startingPoint;
+
+    private String destination;
+
+    private Integer estimatedFee;
+
+
+    @PostPersist
+    public void onPostPersist(){
+    	
+    	//배차요청
+        GrabRequestConfirmed grabRequestConfirmed = new GrabRequestConfirmed();
+        
+        BeanUtils.copyProperties(this, grabRequestConfirmed);
+        grabRequestConfirmed.publishAfterCommit();
+
+        htaxi.external.Payment payment = new htaxi.external.Payment();
+        payment.setId(getid());
+
+        GrabApplication.applicationContext.getBean(htaxi.external.PaymentService.class)
+            .pay(payment);
+
+        GrabCancelled grabCancelled = new GrabCancelled();
+        BeanUtils.copyProperties(this, grabCancelled);
+        grabCancelled.publishAfterCommit();
+
+    }
+```
 
 
 ![DDD_2](https://github.com/MANI907/H-Taxi/blob/main/Images/%EC%9D%B4%EB%AF%B8%EC%A7%80%206.png?raw=true)
